@@ -38,14 +38,14 @@ Install the OS dependencies:
 
 ```shell
 wget -q --show-progress --https-only --timestamping \
-  https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.17.0/crictl-v1.17.0-linux-amd64.tar.gz \
+  https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.18.0/crictl-v1.18.0-linux-amd64.tar.gz \
   https://storage.googleapis.com/gvisor/releases/nightly/latest/runsc \
   https://github.com/opencontainers/runc/releases/download/v1.0.0-rc10/runc.amd64\
   https://github.com/containernetworking/plugins/releases/download/v0.8.5/cni-plugins-linux-amd64-v0.8.5.tgz \
-  https://github.com/containerd/containerd/releases/download/v1.3.2/containerd-1.3.2.linux-amd64.tar.gz \
-  https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubectl \
-  https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kube-proxy \
-  https://storage.googleapis.com/kubernetes-release/release/v1.17.3/bin/linux/amd64/kubelet
+  https://github.com/containerd/containerd/releases/download/v1.3.4/containerd-1.3.4.linux-amd64.tar.gz \
+  https://storage.googleapis.com/kubernetes-release/release/v1.18.2/bin/linux/amd64/kubectl \
+  https://storage.googleapis.com/kubernetes-release/release/v1.18.2/bin/linux/amd64/kube-proxy \
+  https://storage.googleapis.com/kubernetes-release/release/v1.18.2/bin/linux/amd64/kubelet
 ```
 
 Create the installation directories:
@@ -67,9 +67,9 @@ Install the worker binaries:
   sudo mv runc.amd64 runc
   chmod +x kubectl kube-proxy kubelet runc runsc
   sudo mv kubectl kube-proxy kubelet runc runsc /usr/local/bin/
-  sudo tar -xvf crictl-v1.17.0-linux-amd64.tar.gz -C /usr/local/bin/
+  sudo tar -xvf crictl-v1.18.0-linux-amd64.tar.gz -C /usr/local/bin/
   sudo tar -xvf cni-plugins-linux-amd64-v0.8.5.tgz -C /opt/cni/bin/
-  sudo tar -xvf containerd-1.3.2.linux-amd64.tar.gz -C /
+  sudo tar -xvf containerd-1.3.4.linux-amd64.tar.gz -C /
 }
 ```
 
@@ -302,15 +302,15 @@ ssh kuberoot@${PUBLIC_IP_ADDRESS}
 List the registered Kubernetes nodes:
 
 ```shell
-kubectl get nodes
+kubectl get nodes --kubeconfig admin.kubeconfig
 ```
 
 > output
 
 ```shell
 NAME       STATUS   ROLES    AGE   VERSION
-worker-0   Ready    <none>   17s   v1.17.3
-worker-1   Ready    <none>   13s   v1.17.3
+worker-0   Ready    <none>   17s   v1.18.2
+worker-1   Ready    <none>   13s   v1.18.2
 ```
 
 Next: [Configuring kubectl for Remote Access](10-configuring-kubectl.md)
